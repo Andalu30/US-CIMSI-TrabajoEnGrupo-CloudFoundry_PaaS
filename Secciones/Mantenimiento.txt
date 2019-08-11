@@ -1,0 +1,45 @@
+
+
+\section{Mantenimiento}
+
+\subsection{Mantenimiento general}
+\subsubsection{Mantenimiento del datacenter}
+Respecto al mantenimiento del datacenter en el que se encuentra nuestra instancia de Cloud Foundry nos encontramos con un mantenimiento general tal y como hemos visto en la asignatura.\\
+Deberemos de tener en cuenta los sitemas de alimentación eléctrica, extinción de incendios, climatización asi como el equipamiento de comunicaciones y televigilancia. Debido a que todos estos temas se alejan del objetivo de este trabajo de investigación se recomienda la lectura de la bibliografia para adquirir mas conocimiento al respecto \cite{cpdbib}.
+
+\subsubsection{Mantenimiento del hardware y softwaree}
+En cuanto al mantenimiento del hardware nos encontramos también con un mantenimiento general que garantize el correcto funcionamiento de los equipos.\\
+Respecto al software, el mantenimientos será, una vez más, general. Ya que CF se monta sobre una estructura Linux se entiende que los administradores de los sistemas tendrán que mantener estos sistemas funcionando asi como realizar actualizaciones de paquetes, de kernels, escrutinio de logs, etc.\\
+Una vez mas, como este tema se aleja del objetivo de este trabajo se recomienda la lectura de la bibliografia \cite{redhatSysadminguide}.
+
+\subsection{Mantenimiento específico de Cloud Foundry}
+\subsubsection{Testing con Inigo y CATs}
+Inigo es una suite de test que se le pueden pasar a todos los componentes Diego para de esta forma asegurarnos de que todo se ejecuta correctamente.\\
+CATs, sigla de CF Acceptance Test es, al igual que Inigo, otra suite de tests que se ejecutan con cfdot CLI y mediante peticiones curl.
+\subsubsection{cfdot CLI}
+cfdot, cuyo nombre completo es CF Diego Operator Toolkit es una CLI que nos permite interactuar con un despliegue de Diego. Mediante esta herramienta podremos lanzar comados que cambien en comportamiento de los llamados LRP (Long-Running Process).\\
+Un ejemplo de lo que podemos realizar sería crear y retirar distintos LRP mediante indice o uid asi como listar y modificar distintas tareas a realizar por los componente Diego.
+
+\subsection{Opciones en desarrollo}
+\subsubsection{admin-ui}
+Existen además varias opciones que se encuentran en desarrollo, una de las mas interesantes es Admin-UI, que pretende crear una interfaz gráfica que pueda controlar aspectos importantes de un despliegue de CF. En la figura \ref{fig:admin-ui} podemos ver la interfaz gráfica de esta herramienta.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{fotogramaCharlaUI.png}
+    \caption{Fotograma extraido de la charla `Deploy the admin-ui as a CloudFoundry application' en el que se muestra la interfaz gráfica de admin-ui}
+    \label{fig:admin-ui}
+\end{figure}
+
+
+
+[REFS]
+Cloud Foundry Foundation 2018,
+'Running Cloud Foundry' https://docs.cloudfoundry.org/running/index.htm
+Documentación web de Cloud Foundry.
+
+Michael Grifalconi, 'Deploy the admin-ui as a CloudFoundry applications' Cloud Foundry Youtube channel. https://www.youtube.com/watch?v=9Np7swZN-4g
+
+https://docs.cloudfoundry.org/adminguide/
+
+https://docs.cloudfoundry.org/running/monitoring-test.html

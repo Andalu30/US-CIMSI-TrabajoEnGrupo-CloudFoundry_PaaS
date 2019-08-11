@@ -1,0 +1,40 @@
+##Introducción
+
+##¿Qué es Cloud Foundry?
+Cloud Foundry es una plataforma que nos permite ejecutar aplicaciones, tareas y servicios. Al ser una plataforma cloud-native, utiliza infraestructura basada en la Nube de forma que las aplicaciones que son ejecutadas de la plataforma pueden estar aisladas de la configuración física, permitiendo así proveer de un servicio fiable de aplicaciones aún contando con una infraestructura no fiable.
+
+##Plataformas en la Nube
+Este tipo de plataformas nos permiten lanzar aplicaciones en red o servicios y hacerlos disponibles para todo el mundo en cuestión de minutos. Es un sistema flexible: cuando una apliación se vuelve popular, puede escalarse de forma sencilla para permitir más tráfico, simplificando un trabajo que antes podía requerir meses.
+
+[IMG] https://docs.cloudfoundry.org/concepts/images/power-of-platform.png
+
+##¿Cómo funciona Cloud Foundry?
+Consta de subsistemas especializados en diferentes funciones:
+
+###Balanceo de carga
+El sistema equilibra la carga de procesamiento en múltiples máquinas, optimizando eficiencia y fiabilidad. Se realiza a tres niveles:
+
+1. BOSH crea y lanza máquinas virtuales sobre una infraestructura física y, sobre ellas, ejecuta Cloud Foundry.
+
+2. El Cloud Controller corre las aplicaciones y otros procesos en las máquinas virtuales, equilibrando la demanda y gestionando los ciclos de vida de las aplicaciones.
+
+3. El router enruta el tráfico entrante a las máquinas virtuales, generalmente funcionando con un balanceador de carga provisto por el cliente.
+
+###¿Cómo funcionan las aplicaciones?
+Cloud Foundry designa dos tipos de máquinas virtuales: las componentes, que constituyen la infraestructura de la plataforma, y las anfitrionas, que contienen las aplicaciones externas. El sistema Diego es el que regula la carga en estas últimas.
+
+###¿Cómo organiza Cloud Foundry a los usuarios y entornos de trabajo?
+La gestión de los usuarios se realiza a través de dos servidores UAA (User Authentication and Authorization), que almacenan la información internamente o pueden conectarse a gestores externos de usuarios.
+
+###¿Dónde almacena los recursos?
+Cloud Foundry utiliza el sistema git en GitHub para control de versiones de su código fuente, documentación y otros recursos. La plataforma utiliza bases de datos MySQL para el almacenamiento y compartición de archivos.
+
+###Comunicación entre componentes
+La comunicación entre los diferentes elementos se realiza mediante mensajes internos utilizando protocolos http y https y mandando mensajes NATS entre ellos directamente.
+
+###¿Cómo se monitoriza y analiza un sistema Cloud Foundry?
+La plataforma genera registros del sistema de cada uno de sus componentes y aplicaciones. El sistema Loggregator lo estructura y construye un sistema ordenado, llamado Firehose, a través del cual podemos monitorizar los servicios y generar alertas.
+
+[REFS]
+https://docs.cloudfoundry.org/concepts/overview.html
+Winn, Duncan C.E. 2017. Cloud Foundry: the definitive guide: develop, deploy, and scale. Beijing, China: O'Reilly.

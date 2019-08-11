@@ -1,0 +1,55 @@
+#Arquitectura
+##Intro
+La arquitectura de Cloud foundry se puede dividir en varias partes.
+A continuación se describirán los componentes mas importantes de cada una de estas partes.
+En la figura siguiente, ademas, se puede observar un esbozo simplificado de la arquitectura de CloudFoundry.
+[IMG] https://docs.cloudfoundry.org/concepts/images/cf_architecture_block.png
+
+
+##Enrutamiento
+El router, también llamado Gororouter, es el encargado de enrutar el trafico entrante al componente adecuado, ya sea el CloudController o cualquier célula Diego, en la que como veremos mas adelante se ejecutan las aplicaciones. Este router esta implementado en Go, lo que hace que tenga control total sobre cada conexión, lo que simplifica el soporte para otros tipos de tráfico no clásico como WebSockets y HTTP CONNECT.
+Toda la lógica de enrutamiento se lleva a cabo en un proceso independiente, lo que hace que se reduzca la latencia.
+El router recibe la información de las actualizaciones a traves del sistema de mensajería NATS de CloudFoundry, en concreto a traves de queries al Diego Bulletin Board System (BSS), que le indica en que células y contenedores se encuentran que aplicaciones. Si estos enrutamientos no se ven actualizados en dos minutos se ven eliminados, por lo tanto el proceso de queries al BBS se realiza al menos una vez cada dos minutos.
+
+
+
+##Autentificación
+El servidor de OAuth, comúnmente llamado el UAA, y el servidor de inicio de sesión trabajan para asegurar la autentificación.
+###El UAA
+El papel principal del UAA es el de proveedor de OAuth2, dar tokens a aplicaciones. Junto con el servidor de inicio de sesión, el UAA autorizará a los usuarios con las credenciales de CF o con cualesquiera que hayan sido configuradas.
+
+
+
+##Ciclo de vida de la app
+###CloudController y DiegoBrain
+El Cloud Controller es el encargado de dirigir el despliegue de las aplicaciones. Es el endpoint al que se conectan los desarrolladores que quieren desplegar una aplicación en CF. El CC necesita de una base de datos Postgres o MySQL.
+El CC conectará con el DiegoBrain, que como su nombre indica, es el cerebro principal del sistema Diego, que como veremos en la sección ?? es el encargado de poner en funcionamiento las VMs necesarias para que la aplicación funcione tal y como la quiere el usuario.
+
+
+###nsync, BSS, Cell Reps
+Estos componentes son los que hacen que las aplicaciones se mantengan funcionando. Son los responsables de monitorizar y analizar los estados de los contenedores así como iniciarlos y pararlos para cumplir con las especificaciones del usuario.
+· nsync es el encargado modificar el parámetro 'DesiredLRP' en la BSS de Diego.
+· Cell Rep es el encargado de actualizar el parámetro 'ActualLRP' en la BSS con el valor correcto.
+· BSS es la base de datos de Diego,l se encarga de que los dos parámetros anteriores sean iguales. Puede modificar el numero de contenedores para que esta igualdad se mantenga siempre.
+
+
+##Almacenamiento y ejecución de la app
+###Blobstore
+El blobstore es un repositorio para archivos binarios grandes los cuales Github no sería capaz de almacenar eficientemente.
+
+###Diego Cell
+Todas las aplicaciones que se ejecutan en CF se ejecutan dentro de unos contenedores llamados Garden, dentro de las maquinas virtuales conocidas como Diego Cells. Las Diego Cells son las que se encargan de mantener los contenedores funcionando así como de reportar su estado al Diego BSS y de enviar los logs a Loggregator, que como veremos a continuación es el encargado de hacer llegar los logs de los contenedores a los usuarios.
+
+
+##Métricas y logs
+###Loggregator
+El Loggregator, de la unión de las palabras inglesas 'log' y 'agregattor' es el encargador de hacer llegar los logs de las aplicaciones a los usuarios.
+
+###Metrics Collector
+El recolector de métricas se encarga de recoger las métricas de los distintos componentes de CF, lo que permite monitorizar el despliegue de CF así como aplicar una mejora continua a la infraestructura.
+
+
+[REFS]
+https://docs.cloudfoundry.org/concepts/architecture/index.html
+https://docs.cloudfoundry.org/concepts/architecture/router.html
+https://docs.cloudfoundry.org/concepts/architecture/uaa.html
