@@ -1,0 +1,15 @@
+#Replicación
+
+##Intro
+La replicación es totalmente necesaria en sistemas de la información, ya que nos garantiza mayor fiabilidad y protección ante fallos, ataques o desastres, al clonarse las instancias desplegadas. En caso de bases de datos, además, nos permite mayor acceso en paralelo, pues es más habitual la lectura de información que la escritura.
+
+##Replicación en Cloud Foundry
+Cloud Foundry permite la creación de múltiples instancias redundantes que garanticen la resiliencia y demandas de disponibilidad necesarias.
+
+En este sentido, Cloud Foundry nos recomienda al menos duplicar cada una de sus instancias tal y como aparecen en la siguiente tabla:
+[Ver tabla de: https://docs.cloudfoundry.org/concepts/high-availability.html]
+
+La plataforma permite una gestión óptima de todas las instancias para asegurar una disponibilidad prácticamente total.
+
+##Conclusión
+Cloud Foundry junto con la herramienta BOSH, permiten la gestión de estos sistemas distribuidos a gran escala. Ambos servicios facilitan la clonación de máquinas virtuales, despliegue dinámico de instancias de una aplicación que haya fallado y refuerzan la separación entre las diferentes capas de la infraestructura.

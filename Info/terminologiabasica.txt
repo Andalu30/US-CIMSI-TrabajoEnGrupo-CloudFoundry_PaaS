@@ -1,0 +1,14 @@
+-	AZ (Availability Zone): Un segmento de infraestructura de red funcionalmente independiente, a menudo correlacionado con la región geográfica, diseñado para aumentar la disponibilidad y la tolerancia a fallos.
+-	Blob (Binary Large Objects, objetos binarios grandes): son elementos utilizados en las bases de datos para almacenar datos de gran tamaño que cambian de forma dinámica.
+-	BOSH: es un proyecto de código abierto que ofrece herramientas para la implementación y la gestión del ciclo de vida de servicios distribuidos a gran escala.
+-	CATs: CF Acceptance Tests (CATs). Está diseñado para probar características orientadas al usuario.
+-	Cfdot (CF Diego Operator Toolkit): Herramienta diseñada para interactuar con los componentes de Diego.
+-	Cloud controller: permite que los clientes accedan al sistema. Mantiene una base de datos con tablas para organizaciones, espacios, servicios, roles de usuario entre otros.
+-	Cloud Foundry:  plataforma como servicio (PaaS) de código abierto originalmente desarrollado por VMware.
+-	Diego: sistema de gestión de contenedores para Cloud Foundry.
+-	Diego Brain: distribuye tareas y LRPs a Diego Cells y corrige las discrepancias entre los conteos reales y deseados para asegurar la tolerancia a fallos y la consistencia a largo plazo.
+-	Docker: proyecto de código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software, proporcionando una capa adicional de abstracción y automatización de virtualización de aplicaciones en múltiples sistemas operativos.
+-	Dopplers: recopilan registros, los almacenan en buffers temporales y los envían a su destino.
+-	Inigo: es una suite de prueba de integración que lanza los componentes de Diego a través de varios casos de prueba, incluyendo fallos de componentes y otros escenarios excepcionales.
+-	Loggregator: recopila y transmite registros y métricas de aplicaciones de usuario en una implementación de Cloud Foundry, así como métricas de componentes de CF.
+-	LRP(Long-Running Process): procesos de larga duración.
